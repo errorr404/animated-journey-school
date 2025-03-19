@@ -25,7 +25,7 @@ const Principal = () => {
                 </div>
               </div>
               <div className="absolute -bottom-4 -right-4 glass rounded-lg py-2 px-4">
-                <h4 className="font-semibold text-foreground">Mrs. Renu Ranjan</h4>
+                <h4 className="font-semibold text-foreground">Renu Ranjan</h4>
                 <p className="text-sm text-muted-foreground">Principal</p>
               </div>
             </div>
@@ -51,7 +51,7 @@ const Principal = () => {
                 <div className="flex items-center space-x-3">
                   <div className="h-12 w-1 bg-primary rounded-full"></div>
                   <div>
-                    <h4 className="font-semibold text-foreground">Mrs. Renu Ranjan</h4>
+                    <h4 className="font-semibold text-foreground">Renu Ranjan</h4>
                     <p className="text-sm text-muted-foreground">Principal, New Era English School</p>
                   </div>
                 </div>
