@@ -15,6 +15,12 @@ const Index = () => {
   useEffect(() => {
     // Update the document title
     document.title = "New Era English School";
+    
+    // Add the font stylesheet to the document head
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Comic+Neue&family=Indie+Flower&family=Schoolbell&display=swap';
+    document.head.appendChild(link);
   }, []);
   
   return (
@@ -26,7 +32,7 @@ const Index = () => {
       
       <Navbar />
       
-      <main id="main-content">
+      <main id="main-content" className="font-sans">
         <Hero />
         <About />
         <Programs />

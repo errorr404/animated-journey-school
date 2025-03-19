@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Comic+Neue&family=Indie+Flower&family=Schoolbell&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -101,6 +103,18 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
+  }
+
+  .section-title {
+    @apply font-rounded text-primary;
+  }
+
+  .content-text {
+    @apply font-sans;
+  }
+
+  .highlight-text {
+    @apply font-handwritten;
   }
 
   /* Glass morphism styles */

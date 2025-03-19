@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -20,8 +19,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
-				display: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
+				sans: ['Comic Sans MS', 'Bubblegum Sans', 'Indie Flower', 'system-ui', 'sans-serif'],
+				display: ['Schoolbell', 'Comic Sans MS', 'SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
+				handwritten: ['Indie Flower', 'Comic Sans MS', 'cursive'],
+				rounded: ['Bubblegum Sans', 'Comic Sans MS', 'Schoolbell', 'cursive'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

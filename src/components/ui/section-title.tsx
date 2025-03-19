@@ -30,15 +30,15 @@ const SectionTitle = ({
       )}
     >
       {overline && (
-        <div className="inline-block px-3 py-1 text-xs font-medium tracking-wider text-primary uppercase rounded-full bg-primary/10 mb-2">
+        <div className="inline-block px-3 py-1 text-xs font-medium tracking-wider text-primary uppercase rounded-full bg-primary/10 mb-2 font-handwritten">
           {overline}
         </div>
       )}
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight text-foreground">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight text-foreground font-rounded">
         {title}
       </h2>
       {description && (
-        <p className="max-w-2xl mx-auto text-muted-foreground text-lg leading-relaxed">
+        <p className="max-w-2xl mx-auto text-muted-foreground text-lg leading-relaxed font-sans">
           {description}
         </p>
       )}
