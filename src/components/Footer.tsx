@@ -18,7 +18,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-white/70 text-sm leading-relaxed">
-              Providing quality education and shaping the future of our children since 2000.
+              Providing quality education and shaping the future of our children since 2015.
             </p>
           </div>
 
