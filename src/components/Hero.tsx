@@ -56,7 +56,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
             </div>
             <div className="text-center absolute -right-4 -bottom-4 w-24 h-24 bg-secondary rounded-full flex items-center justify-center animate-float">
-              <span className="text-lg font-bold text-primary">Since 2015</span>
+              <span className="text-lg font-bold text-primary">Estd 2015</span>
             </div>
           </div>
         </div>
