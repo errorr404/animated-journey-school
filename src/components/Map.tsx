@@ -1,9 +1,8 @@
-
-import React from "react";
-import Container from "./ui/container";
-import SectionTitle from "./ui/section-title";
-import ScrollReveal from "./ScrollReveal";
-import { MapPin, Navigation } from "lucide-react";
+import React from 'react';
+import Container from './ui/container';
+import SectionTitle from './ui/section-title';
+import ScrollReveal from './ScrollReveal';
+import { MapPin, Navigation } from 'lucide-react';
 
 const Map = () => {
   return (
@@ -27,9 +26,11 @@ const Map = () => {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">School Address</h3>
                   <p className="text-muted-foreground">
-                    New Era English School<br />
-                    New Era Road, School Area<br />
-                    City, State - Pincode
+                    New Era English School
+                    <br />
+                    Naka Chowk, Purnea City
+                    <br />
+                    Purnea, Bihar - 854301
                   </p>
                 </div>
               </div>
@@ -69,15 +70,13 @@ const Map = () => {
           <ScrollReveal animation="fade-in-left" delay={200}>
             <div className="glass rounded-xl overflow-hidden shadow-lg">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.9984889649584!2d77.57420081482169!3d12.867619990932438!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae158139cc1a73%3A0x9fb4d79de5d5c8e2!2sNew%20Era%20English%20School!5e0!3m2!1sen!2sin!4v1627318842149!5m2!1sen!2sin"
-                width="100%"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4008.0927855235905!2d87.51549330000002!3d25.8085296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eff98c580568af%3A0x1629b60c77c09e33!2sNew%20Era%20English%20School%2C%20Purnea%2C%20Bihar%20854302!5e1!3m2!1sen!2sin!4v1742403233941!5m2!1sen!2sin"
+                width="600"
                 height="450"
-                style={{ border: 0 }}
-                allowFullScreen
+                // style="border:0;"
+                // allowfullscreen=""
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full aspect-video"
-                title="New Era English School Map"
+                // referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
           </ScrollReveal>

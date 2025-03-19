@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
@@ -12,16 +11,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Image, ImageOff } from "lucide-react";
+import { Image, ImageOff, Film } from "lucide-react";
 
 const Gallery = () => {
   const [activeTab, setActiveTab] = useState("photos");
 
-  // Updated photos with colorful categories
-  const photos = [
+  // Updated media items with both photos and videos
+  const mediaItems = [
     {
       id: 1,
-      src: "/lovable-uploads/ffac1b73-e0bb-4170-8af0-9b7161bf7490.png",
+      type: "image",
+      src: "/assets/ffac1b73-e0bb-4170-8af0-9b7161bf7490.png",
       alt: "School celebration with deity decoration",
       caption: "Annual Saraswati Puja Celebration",
       category: "cultural",
@@ -29,15 +29,17 @@ const Gallery = () => {
     },
     {
       id: 2,
-      src: "/lovable-uploads/11143778-3f10-4124-aa4c-af37c4891126.png",
-      alt: "Students performing with Indian flag",
+      type: "video",
+      src: "/assets/parade.mp4", // Replace with actual video URL
+      poster: "/assets/11143778-3f10-4124-aa4c-af37c4891126.png",
       caption: "Republic Day Performance",
       category: "national",
       color: "bg-orange-100 border-orange-400"
     },
     {
       id: 3,
-      src: "/lovable-uploads/5ca3cd84-8db5-4c8b-9e08-b75d87227c93.png",
+      type: "image",
+      src: "/assets/5ca3cd84-8db5-4c8b-9e08-b75d87227c93.png",
       alt: "Students in traditional attire with Indian flag",
       caption: "Independence Day Cultural Program",
       category: "national",
@@ -45,7 +47,8 @@ const Gallery = () => {
     },
     {
       id: 4,
-      src: "/lovable-uploads/8b6977da-c966-4f3c-9d8e-3382d16e2f5d.png",
+      type: "image",
+      src: "/assets/8b6977da-c966-4f3c-9d8e-3382d16e2f5d.png",
       alt: "Students in traditional attire with Indian flag in field",
       caption: "National Day Celebrations",
       category: "national",
@@ -53,7 +56,8 @@ const Gallery = () => {
     },
     {
       id: 5,
-      src: "/lovable-uploads/4e756796-77e7-4098-b6e7-b136c7a552fa.png",
+      type: "image",
+      src: "/assets/4e756796-77e7-4098-b6e7-b136c7a552fa.png",
       alt: "Student decorating for cultural event",
       caption: "Cultural Event Preparations",
       category: "cultural",
@@ -61,13 +65,36 @@ const Gallery = () => {
     },
     {
       id: 6,
-      src: "/lovable-uploads/771b4218-6a2a-4eff-a7e4-a5b8e4779fa9.png",
+      type: "image",
+      src: "/assets/771b4218-6a2a-4eff-a7e4-a5b8e4779fa9.png",
       alt: "Students lined up with Indian flags",
       caption: "School Assembly on Republic Day",
       category: "national",
       color: "bg-yellow-100 border-yellow-400"
     }
   ];
+
+  const renderMediaItem = (item) => {
+    if (item.type === "video") {
+      return (
+        <video
+          controls
+          poster={item.poster}
+          className="object-cover w-full h-full"
+        >
+          <source src={item.src} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      );
+    }
+    return (
+      <img
+        src={item.src}
+        alt={item.alt}
+        className="object-cover w-full h-full transition-transform duration-700 hover:scale-105"
+      />
+    );
+  };
 
   return (
     <section id="gallery" className="py-16 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/30 dark:to-blue-900/20">
@@ -92,13 +119,13 @@ const Gallery = () => {
                   className="flex items-center gap-2 data-[state=active]:bg-white dark:data-[state=active]:bg-purple-800 data-[state=active]:text-purple-700 dark:data-[state=active]:text-white transition-all duration-300"
                 >
                   <Image className="w-4 h-4" />
-                  <span>Photos</span>
+                  <span>Gallery</span>
                 </TabsTrigger>
                 <TabsTrigger 
                   value="carousel" 
                   className="flex items-center gap-2 data-[state=active]:bg-white dark:data-[state=active]:bg-purple-800 data-[state=active]:text-purple-700 dark:data-[state=active]:text-white transition-all duration-300"
                 >
-                  <ImageOff className="w-4 h-4" />
+                  <Film className="w-4 h-4" />
                   <span>Slideshow</span>
                 </TabsTrigger>
               </TabsList>
@@ -106,34 +133,30 @@ const Gallery = () => {
 
             <TabsContent value="photos" className="space-y-4">
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-                {photos.map((photo) => (
+                {mediaItems.map((item) => (
                   <ScrollReveal 
-                    key={photo.id} 
+                    key={item.id} 
                     animation="scale" 
-                    delay={photo.id * 100}
+                    delay={item.id * 100}
                     className="group"
                   >
                     <div 
-                      className={`overflow-hidden rounded-lg shadow-md transition-all duration-500 hover:shadow-xl border-2 ${photo.color} hover:-translate-y-2`}
+                      className={`overflow-hidden rounded-lg shadow-md transition-all duration-500 hover:shadow-xl border-2 ${item.color} hover:-translate-y-2`}
                     >
                       <div className="relative">
                         <AspectRatio ratio={4/3}>
-                          <img
-                            src={photo.src}
-                            alt={photo.alt}
-                            className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
-                          />
+                          {renderMediaItem(item)}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div className="absolute bottom-3 left-3 right-3">
                               <span className="inline-block px-2 py-1 text-xs font-medium text-white bg-primary/80 rounded-full mb-1">
-                                {photo.category === 'national' ? 'National Event' : 'Cultural Event'}
+                                {item.type === 'video' ? 'Video' : item.category === 'national' ? 'National Event' : 'Cultural Event'}
                               </span>
                             </div>
                           </div>
                         </AspectRatio>
                       </div>
                       <div className="p-4">
-                        <p className="text-sm font-medium text-center">{photo.caption}</p>
+                        <p className="text-sm font-medium text-center">{item.caption}</p>
                       </div>
                     </div>
                   </ScrollReveal>
@@ -152,20 +175,16 @@ const Gallery = () => {
                     className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl shadow-md dark:from-purple-900/20 dark:to-pink-900/20"
                   >
                     <CarouselContent>
-                      {photos.map((photo) => (
-                        <CarouselItem key={photo.id} className="px-2">
-                          <div className={`overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-lg border-2 ${photo.color}`}>
+                      {mediaItems.map((item) => (
+                        <CarouselItem key={item.id} className="px-2">
+                          <div className={`overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-lg border-2 ${item.color}`}>
                             <AspectRatio ratio={16/9}>
-                              <img
-                                src={photo.src}
-                                alt={photo.alt}
-                                className="object-cover w-full h-full transition-transform duration-700 hover:scale-105"
-                              />
+                              {renderMediaItem(item)}
                             </AspectRatio>
                             <div className="p-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm">
-                              <h3 className="font-medium text-center">{photo.caption}</h3>
+                              <h3 className="font-medium text-center">{item.caption}</h3>
                               <p className="text-xs text-center mt-1 text-muted-foreground">
-                                {photo.category === 'national' ? 'National Event' : 'Cultural Event'}
+                                {item.type === 'video' ? 'Video' : item.category === 'national' ? 'National Event' : 'Cultural Event'}
                               </p>
                             </div>
                           </div>

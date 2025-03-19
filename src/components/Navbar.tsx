@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import Container from "./ui/container";
-import { Book, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -35,22 +34,26 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4",
         {
-          "bg-white/80 backdrop-blur-md shadow-subtle py-3": isScrolled,
-          "bg-transparent": !isScrolled,
+          "bg-background/95 backdrop-blur-md shadow-sm border-b py-3": isScrolled,
+          "bg-background/95 backdrop-blur-md border-b": !isScrolled,
         }
       )}
     >
       <Container className="flex items-center justify-between">
         {/* Logo */}
         <a href="#home" className="flex items-center space-x-2">
-          <Book className="h-8 w-8 text-primary" />
+          <img 
+            src="/assets/logo.jpg"
+            alt="School Logo"
+            className="h-8 w-8 object-contain"
+          />
           <span className="text-lg font-bold tracking-tight">
             New Era English School
           </span>
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-1">
+        <nav className="hidden md:flex space-x-1 bg-background/95">
           {navLinks.map((link) => (
             <a
               key={link.name}

@@ -45,16 +45,16 @@ const Footer = () => {
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-primary mt-0.5" />
                 <span className="text-white/70 text-sm">
-                  New Era Road, School Area, City, State - Pincode
+               Naka Chowk, Purnea City, Purnea, Bihar - 854301
                 </span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-primary" />
                 <a 
-                  href="tel:+911234567890" 
+                  href="tel:+919135531843" 
                   className="text-white/70 text-sm hover:text-primary transition-colors duration-200"
                 >
-                  +91 123 456 7890
+                  9135531843
                 </a>
               </li>
               <li className="flex items-center space-x-3">

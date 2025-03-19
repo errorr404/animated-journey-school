@@ -52,11 +52,11 @@ const Hero = () => {
           <div className="relative aspect-[4/3] w-full max-w-lg mx-auto lg:max-w-none animate-fade-in-left" style={{ animationDelay: "800ms" }}>
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/20 to-primary/5 animate-pulse-slow"></div>
             <div className="absolute inset-2 glass rounded-2xl overflow-hidden shadow-lg">
-              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1920&auto=format&fit=crop')] bg-cover bg-center"></div>
+              <div className="absolute inset-0 bg-[url('/assets/group-pic.jpeg')] bg-cover bg-center"></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
             </div>
-            <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-secondary rounded-full flex items-center justify-center animate-float">
-              <span className="text-lg font-bold text-primary">Since 2000</span>
+            <div className="text-center absolute -right-4 -bottom-4 w-24 h-24 bg-secondary rounded-full flex items-center justify-center animate-float">
+              <span className="text-lg font-bold text-primary">Since 2015</span>
             </div>
           </div>
         </div>

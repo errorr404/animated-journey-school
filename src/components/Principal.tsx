@@ -21,7 +21,7 @@ const Principal = () => {
             <div className="relative mx-auto max-w-md">
               <div className="aspect-[3/4] rounded-2xl overflow-hidden glass p-2">
                 <div className="h-full w-full relative overflow-hidden rounded-xl">
-                  <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1376&auto=format&fit=crop')] bg-cover bg-center"></div>
+                  <div className="absolute inset-0 bg-[url('/assets/principle.jpeg')] bg-cover bg-center"></div>
                 </div>
               </div>
               <div className="absolute -bottom-4 -right-4 glass rounded-lg py-2 px-4">
