@@ -42,6 +42,7 @@ const SectionTitle = ({
           {description}
         </p>
       )}
+      <div className="w-16 h-1 bg-primary mx-auto mt-4"></div>
     </div>
   );
 };

@@ -14,8 +14,8 @@ const Testimonials = () => {
       role: "Parent",
       avatar: "PS",
       quote: "New Era English School has provided my child with exceptional education and character-building opportunities. The teachers are dedicated and the environment is nurturing.",
-      color: "bg-gradient-to-br from-orange-100 to-pink-100 border-orange-200 shadow-orange-100/50",
-      iconColor: "text-orange-400"
+      color: "bg-gradient-to-br from-gray-100 to-gray-50 border-gray-200 shadow-gray-100/50",
+      iconColor: "text-primary"
     },
     {
       id: 2,
@@ -23,8 +23,8 @@ const Testimonials = () => {
       role: "Parent",
       avatar: "RK",
       quote: "The school's focus on both academics and extracurricular activities has helped my daughter become more confident and well-rounded. We couldn't be happier.",
-      color: "bg-gradient-to-br from-blue-100 to-purple-100 border-blue-200 shadow-blue-100/50",
-      iconColor: "text-blue-400"
+      color: "bg-gradient-to-br from-gray-100 to-gray-50 border-gray-200 shadow-gray-100/50",
+      iconColor: "text-primary"
     },
     {
       id: 3,
@@ -32,13 +32,13 @@ const Testimonials = () => {
       role: "Former Student",
       avatar: "SV",
       quote: "My years at New Era English School gave me a strong foundation that has helped me succeed in higher education. The supportive teachers and quality education made all the difference.",
-      color: "bg-gradient-to-br from-green-100 to-teal-100 border-green-200 shadow-green-100/50",
-      iconColor: "text-green-400"
+      color: "bg-gradient-to-br from-gray-100 to-gray-50 border-gray-200 shadow-gray-100/50",
+      iconColor: "text-primary"
     }
   ];
 
   return (
-    <section className="py-16 overflow-hidden bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50 dark:from-gray-900 dark:via-indigo-900/20 dark:to-blue-900/10">
+    <section className="py-16 overflow-hidden bg-white dark:bg-gray-900">
       <Container>
         <ScrollReveal animation="fade-in">
           <SectionTitle
@@ -59,7 +59,7 @@ const Testimonials = () => {
                   className={`relative h-full p-6 rounded-xl border ${testimonial.color} transition-all duration-500 hover:shadow-xl hover:-translate-y-2`}
                 >
                   <Quote 
-                    className={`absolute -top-4 -left-4 w-8 h-8 p-1.5 rounded-full bg-white ${testimonial.iconColor} animate-pulse-slow`} 
+                    className={`absolute -top-4 -left-4 w-8 h-8 p-1.5 rounded-full bg-white ${testimonial.iconColor}`} 
                   />
                   <div className="flex flex-col h-full">
                     <blockquote className="flex-1 mb-4 italic text-gray-700 dark:text-gray-300">

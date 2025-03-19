@@ -6,34 +6,34 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 20% 10%;
+    --foreground: 209 61% 16%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    --card-foreground: 209 61% 16%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover-foreground: 209 61% 16%;
 
-    --primary: 210 100% 45%;
+    --primary: 210 100% 28%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 50% 96%;
-    --secondary-foreground: 220 20% 10%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 209 61% 16%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 220 10% 50%;
 
     --accent: 210 40% 94%;
-    --accent-foreground: 210 40% 20%;
+    --accent-foreground: 209 61% 16%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 220 20% 90%;
     --input: 220 20% 90%;
-    --ring: 210 100% 45%;
+    --ring: 210 100% 28%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -46,32 +46,32 @@
   }
 
   .dark {
-    --background: 220 20% 10%;
+    --background: 209 61% 16%;
     --foreground: 210 40% 98%;
 
-    --card: 220 20% 10%;
+    --card: 209 61% 16%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 220 20% 10%;
+    --popover: 209 61% 16%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 100% 45%;
+    --primary: 210 100% 28%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 220 20% 16%;
+    --secondary: 209 61% 22%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 20% 16%;
+    --muted: 209 61% 22%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 220 20% 16%;
+    --accent: 209 61% 22%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 20% 16%;
-    --input: 220 20% 16%;
+    --border: 209 61% 22%;
+    --input: 209 61% 22%;
     --ring: 212.7 26.8% 83.9%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -142,4 +142,41 @@
 /* Skip link for accessibility */
 .skip-link {
   @apply sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:px-4 focus:py-3 focus:bg-background focus:text-foreground;
+}
+
+/* Hero section styling */
+.hero-overlay {
+  @apply absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-transparent;
+}
+
+/* South Kent inspired styles */
+.banner-stripe {
+  @apply h-1.5 w-full bg-primary;
+}
+
+.content-section {
+  @apply py-12 md:py-24;
+}
+
+.content-card {
+  @apply bg-white hover:bg-gray-50 border border-gray-200 rounded shadow-sm transition-all hover:shadow-md;
+}
+
+/* Quick nav menu */
+.quick-nav {
+  @apply px-4 py-2 text-sm font-medium bg-primary text-white rounded hover:bg-primary/90 transition-colors;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-primary hover:bg-primary/90 text-white py-2 px-4 rounded transition-colors;
+}
+
+.btn-outline {
+  @apply border border-primary text-primary hover:bg-primary/5 py-2 px-4 rounded transition-colors;
+}
+
+/* Section divider */
+.section-divider {
+  @apply w-20 h-1 bg-primary mx-auto my-6;
 }

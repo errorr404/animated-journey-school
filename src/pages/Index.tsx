@@ -18,7 +18,7 @@ const Index = () => {
   }, []);
   
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-white text-foreground">
       {/* Accessibility skip link */}
       <a href="#main-content" className="skip-link">
         Skip to main content
@@ -26,9 +26,13 @@ const Index = () => {
       
       <Navbar />
       
-      <main id="main-content">
+      <main id="main-content" className="pt-16 md:pt-24">
         <Hero />
-        <About />
+        
+        {/* Content sections with appropriate spacing */}
+        <div className="mt-16 md:mt-24">
+          <About />
+        </div>
         <Programs />
         <Principal />
         <Gallery />
