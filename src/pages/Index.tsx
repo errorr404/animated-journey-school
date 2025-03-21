@@ -14,7 +14,7 @@ import Footer from "@/components/Footer";
 const Index = () => {
   useEffect(() => {
     // Update the document title
-    document.title = "NECS, Purnea";
+    document.title = "NEES, Purnea";
     
     // Add the font stylesheet to the document head
     const link = document.createElement('link');
