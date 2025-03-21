@@ -3,11 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Card, CardContent, CardDescription, CardFooter, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import Container from "@/components/ui/container";
-import { Calendar, Pin, FileText, Image, X, Send, Plus } from "lucide-react";
+import { Calendar, Pin, FileText, Image, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // Define notice types for our noticeboard
 type NoticeType = "text" | "image";
@@ -51,13 +50,6 @@ const Noticeboard = () => {
 
   // State for modal
   const [selectedNotice, setSelectedNotice] = useState<Notice | null>(null);
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [newNotice, setNewNotice] = useState<Partial<Notice>>({
-    title: '',
-    content: '',
-    type: 'text'
-  });
-  const { toast } = useToast();
 
   // Save notices to localStorage whenever they change
   useEffect(() => {
@@ -69,53 +61,8 @@ const Noticeboard = () => {
     setSelectedNotice(notice);
   };
 
-  // Handle adding a new notice
-  const handleAddNotice = () => {
-    if (!newNotice.title || !newNotice.content) {
-      toast({
-        title: "Missing Information",
-        description: "Please fill in all fields.",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    const now = new Date();
-    const newNoticeItem: Notice = {
-      id: Date.now().toString(),
-      title: newNotice.title || '',
-      content: newNotice.content || '',
-      type: newNotice.type as NoticeType || 'text',
-      date: now.toISOString().split('T')[0]
-    };
-
-    setNotices([newNoticeItem, ...notices]);
-    setNewNotice({ title: '', content: '', type: 'text' });
-    setIsAddModalOpen(false);
-    
-    toast({
-      title: "Success!",
-      description: "Your notice has been added.",
-    });
-  };
-
-  // Handle image upload
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    // For simplicity, we're using FileReader to convert image to data URL
-    // In a real app, you'd probably upload this to a server
-    const reader = new FileReader();
-    reader.onload = () => {
-      setNewNotice({
-        ...newNotice,
-        content: reader.result as string,
-        type: 'image'
-      });
-    };
-    reader.readAsDataURL(file);
-  };
+  // Only display the most recent 3 notices
+  const recentNotices = notices.slice(0, 3);
 
   return (
     <section id="noticeboard" className="py-16 bg-gradient-to-br from-yellow-50 to-blue-50">
@@ -129,18 +76,9 @@ const Noticeboard = () => {
           </p>
         </div>
 
-        <div className="flex justify-end mb-6">
-          <Button 
-            onClick={() => setIsAddModalOpen(true)} 
-            className="bg-primary hover:bg-primary/90 rounded-full font-handwritten text-lg"
-          >
-            <Plus className="mr-2 h-5 w-5" /> Add Notice
-          </Button>
-        </div>
-
         {/* Notices Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {notices.map((notice) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {recentNotices.map((notice) => (
             <Card 
               key={notice.id} 
               className="overflow-hidden transition-all duration-300 hover:shadow-lg border-2 border-primary/20 hover:border-primary cursor-pointer bg-white"
@@ -184,6 +122,15 @@ const Noticeboard = () => {
             </Card>
           ))}
         </div>
+        
+        {/* View All Notices Button */}
+        <div className="flex justify-center mt-10">
+          <Link to="/notices">
+            <Button className="bg-primary hover:bg-primary/90 rounded-full font-handwritten text-lg px-8 py-6">
+              View All Notices <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
+        </div>
 
         {/* Notice Detail Modal */}
         <Dialog open={!!selectedNotice} onOpenChange={(open) => !open && setSelectedNotice(null)}>
@@ -211,111 +158,6 @@ const Noticeboard = () => {
                   />
                 </div>
               )}
-            </div>
-          </DialogContent>
-        </Dialog>
-
-        {/* Add Notice Modal */}
-        <Dialog open={isAddModalOpen} onOpenChange={setIsAddModalOpen}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle className="text-2xl font-rounded text-primary">
-                Add New Notice
-              </DialogTitle>
-            </DialogHeader>
-            
-            <div className="grid gap-4 py-4">
-              <div className="space-y-2">
-                <label htmlFor="title" className="text-sm font-medium">
-                  Notice Title
-                </label>
-                <Input
-                  id="title"
-                  placeholder="Enter notice title"
-                  value={newNotice.title}
-                  onChange={(e) => setNewNotice({ ...newNotice, title: e.target.value })}
-                />
-              </div>
-              
-              <div className="flex gap-4">
-                <Button
-                  type="button"
-                  variant={newNotice.type === 'text' ? 'default' : 'outline'}
-                  className={`flex-1 ${newNotice.type === 'text' ? 'bg-primary' : ''}`}
-                  onClick={() => setNewNotice({ ...newNotice, type: 'text' })}
-                >
-                  <FileText className="h-4 w-4 mr-2" /> Text Notice
-                </Button>
-                <Button
-                  type="button"
-                  variant={newNotice.type === 'image' ? 'default' : 'outline'}
-                  className={`flex-1 ${newNotice.type === 'image' ? 'bg-primary' : ''}`}
-                  onClick={() => setNewNotice({ ...newNotice, type: 'image' })}
-                >
-                  <Image className="h-4 w-4 mr-2" /> Image Notice
-                </Button>
-              </div>
-              
-              {newNotice.type === 'text' ? (
-                <div className="space-y-2">
-                  <label htmlFor="content" className="text-sm font-medium">
-                    Notice Content
-                  </label>
-                  <Textarea
-                    id="content"
-                    placeholder="Enter notice content..."
-                    rows={5}
-                    value={newNotice.content}
-                    onChange={(e) => setNewNotice({ ...newNotice, content: e.target.value })}
-                  />
-                </div>
-              ) : (
-                <div className="space-y-2">
-                  <label htmlFor="image" className="text-sm font-medium">
-                    Upload Image
-                  </label>
-                  <div className="flex items-center gap-3">
-                    <Input
-                      id="image"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageUpload}
-                      className="w-full"
-                    />
-                  </div>
-                  {newNotice.content && (
-                    <div className="relative mt-2 h-40 bg-gray-100 rounded-md overflow-hidden">
-                      <img 
-                        src={newNotice.content} 
-                        alt="Preview" 
-                        className="w-full h-full object-contain"
-                      />
-                      <button
-                        type="button"
-                        className="absolute top-2 right-2 p-1 bg-white rounded-full shadow-md"
-                        onClick={() => setNewNotice({ ...newNotice, content: '', type: 'image' })}
-                      >
-                        <X className="h-4 w-4 text-red-500" />
-                      </button>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-            
-            <div className="flex justify-end gap-3">
-              <Button
-                variant="outline"
-                onClick={() => {
-                  setIsAddModalOpen(false);
-                  setNewNotice({ title: '', content: '', type: 'text' });
-                }}
-              >
-                Cancel
-              </Button>
-              <Button onClick={handleAddNotice} className="bg-primary">
-                <Send className="h-4 w-4 mr-2" /> Post Notice
-              </Button>
             </div>
           </DialogContent>
         </Dialog>

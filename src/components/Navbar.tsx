@@ -1,15 +1,18 @@
+
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import Container from "./ui/container";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Academics", href: "#academics" },
-  { name: "Principal", href: "#principal" },
-  { name: "Location", href: "#location" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/#about" },
+  { name: "Academics", href: "/#academics" },
+  { name: "Principal", href: "/#principal" },
+  { name: "Notices", href: "/notices" },
+  { name: "Location", href: "/#location" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 const Navbar = () => {
@@ -41,7 +44,7 @@ const Navbar = () => {
     >
       <Container className="flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="flex items-center space-x-2">
+        <Link to="/" className="flex items-center space-x-2">
           <img 
             src="/assets/logo.jpg"
             alt="School Logo"
@@ -50,18 +53,18 @@ const Navbar = () => {
           <span className="text-lg font-bold tracking-tight">
             New Era English School
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-1 bg-background/95">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
+              to={link.href}
               className="px-3 py-2 text-sm font-medium text-foreground rounded-md hover:bg-secondary transition-colors duration-200 link-underline"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -92,14 +95,14 @@ const Navbar = () => {
         <Container className="py-4">
           <nav className="flex flex-col space-y-4">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href}
                 className="px-4 py-3 text-foreground text-lg font-medium rounded-md hover:bg-secondary transition-colors duration-200"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
         </Container>
