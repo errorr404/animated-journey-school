@@ -7,7 +7,6 @@ import Programs from "@/components/Programs";
 import Principal from "@/components/Principal";
 import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
-import Noticeboard from "@/components/Noticeboard";
 import Map from "@/components/Map";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -39,7 +38,6 @@ const Index = () => {
         <Programs />
         <Principal />
         <Gallery />
-        <Noticeboard />
         <Testimonials />
         <Map />
         <Contact />
